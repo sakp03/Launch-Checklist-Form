@@ -24,13 +24,13 @@ window.addEventListener("load", function() {
          div.innerHTML = `
             <h2>Mission Destination</h2>
             <ol>
-               <li>Name: ${data[0].name}</li>
-               <li>Diameter: ${data[0].diameter}</li>
-               <li>Star: ${data[0].star}</li>
-               <li>Distance from Earth: ${data[0].distance}</li>
-               <li>Number of Moons: ${data[0].moons}</li>
+               <li>Name: ${data[2].name}</li>
+               <li>Diameter: ${data[2].diameter}</li>
+               <li>Star: ${data[2].star}</li>
+               <li>Distance from Earth: ${data[2].distance}</li>
+               <li>Number of Moons: ${data[2].moons}</li>
            </ol>
-           <img src="${data[0].image}">
+           <img src="${data[2].image}">
          `;
    })
    .catch((err) => {
