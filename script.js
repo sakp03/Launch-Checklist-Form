@@ -19,22 +19,23 @@ window.addEventListener("load", function() {
    })
    .then((data) => {
          console.log(data);
+
+         const div = document.getElementById('missionTarget');
+         div.innerHTML = `
+            <h2>Mission Destination</h2>
+            <ol>
+               <li>Name: ${data[0].name}</li>
+               <li>Diameter: ${data[0].diameter}</li>
+               <li>Star: ${data[0].star}</li>
+               <li>Distance from Earth: ${data[0].distance}</li>
+               <li>Number of Moons: ${data[0].moons}</li>
+           </ol>
+           <img src="${data[0].image}">
+         `;
    })
    .catch((err) => {
       console.error(err);
    });
-
-   const div = document.getElementById('missionTarget');
-   div.innerHTML = `
-     <ol>
-     <li>Name: ${data.name}</li>
-     <li>Diameter: ${data.diameter}</li>
-     <li>Star: ${data.star}</li>
-     <li>Distance from Earth: ${data.distance}</li>
-     <li>Number of Moons: ${data.moons}</li>
-     </ol>
-     <img src="${data.image}">
-   `;
 
 });
 
