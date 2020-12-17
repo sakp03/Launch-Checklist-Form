@@ -12,30 +12,49 @@
 <img src="${}">
 */
 
+// window.addEventListener("load", function() {
+//    fetch('https://handlers.education.launchcode.org/static/planets.json')
+//    .then((res) => {
+//          return res.json();
+//    })
+//    .then((data) => {
+//          console.log(data);
+//    })
+//    .catch((err) => {
+//       console.error(err);
+//    });
+
+//    // const div = document.getElementById("missionTarget").innerHTML;
+//    // div.innerHTML =
+//    // <h2>Mission Destination</h2>
+//    //    <ol>
+//    //       <li>Name: ${}</li>
+//    //       <li>Diameter: ${}</li>
+//    //       <li>Star: ${}</li>
+//    //       <li>Distance from Earth: ${}</li>
+//    //       <li>Number of Moons: ${}</li>
+//    //    </ol>
+//    // <img src="${}"></img>
+
+// });
+
 window.addEventListener("load", function() {
-   fetch('https://handlers.education.launchcode.org/static/planets.json')
-   .then((res) => {
-         return res.json();
-   })
-   .then((data) => {
-         console.log(data);
-   })
-   .catch((err) => {
-      console.error(err);
+   fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+       // Access the JSON in the response
+       response.json().then( function(json) {
+         const div = document.getElementById('missionTarget');
+         div.innerHTML = `
+           <ol>
+           <li>Name: ${json.name}</li>
+           <li>Diameter: ${json.diameter}</li>
+           <li>Star: ${json.star}</li>
+           <li>Distance from Earth: ${json.distance}</li>
+           <li>Number of Moons: ${json.moons}</li>
+           </ol>
+           <img src="${json.image}">
+         `;
+       });
    });
-
-   const div = document.getElementById("missionTarget").innerHTML;
-   div.innerHTML =
-   <h2>Mission Destination</h2>
-      <ol>
-         <li>Name: ${}</li>
-         <li>Diameter: ${}</li>
-         <li>Star: ${}</li>
-         <li>Distance from Earth: ${}</li>
-         <li>Number of Moons: ${}</li>
-      </ol>
-   <img src="${}"></img>
-
 });
 
 window.addEventListener("load", function() {
@@ -61,8 +80,12 @@ window.addEventListener("load", function() {
             alert("Make sure to enter valid number for the Fuel Level or Cargo Mass!");
         }  
         
-      document.getElementById("pilotStatus").innerHTML = '${pilotNameInput} Ready';
-      document.getElementById("copilotStatus").innerHTML = '${copilotNameInput} Ready';
+      
+      let pilotStatus = document.getElementById("pilotStatus");
+      pilotStatus.innerHTML = `Pilot ${pilotNameInput.value} is ready for launch`;
+
+      let copilotStatus = document.getElementById("copilotStatus");
+      copilotStatus.innerHTML = `Co-pilot ${copilotNameInput.value} is ready for launch`;
      
       if (fuelLevelValue < 10000){
          document.getElementById("fuelStatus").innerHTML = "Fuel level too low for launch";
