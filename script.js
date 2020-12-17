@@ -12,50 +12,32 @@
 <img src="${}">
 */
 
-// window.addEventListener("load", function() {
-//    fetch('https://handlers.education.launchcode.org/static/planets.json')
-//    .then((res) => {
-//          return res.json();
-//    })
-//    .then((data) => {
-//          console.log(data);
-//    })
-//    .catch((err) => {
-//       console.error(err);
-//    });
-
-//    // const div = document.getElementById("missionTarget").innerHTML;
-//    // div.innerHTML =
-//    // <h2>Mission Destination</h2>
-//    //    <ol>
-//    //       <li>Name: ${}</li>
-//    //       <li>Diameter: ${}</li>
-//    //       <li>Star: ${}</li>
-//    //       <li>Distance from Earth: ${}</li>
-//    //       <li>Number of Moons: ${}</li>
-//    //    </ol>
-//    // <img src="${}"></img>
-
-// });
-
 window.addEventListener("load", function() {
-   fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-       // Access the JSON in the response
-       response.json().then( function(json) {
-         const div = document.getElementById('missionTarget');
-         div.innerHTML = `
-           <ol>
-           <li>Name: ${json.name}</li>
-           <li>Diameter: ${json.diameter}</li>
-           <li>Star: ${json.star}</li>
-           <li>Distance from Earth: ${json.distance}</li>
-           <li>Number of Moons: ${json.moons}</li>
-           </ol>
-           <img src="${json.image}">
-         `;
-       });
+   fetch('https://handlers.education.launchcode.org/static/planets.json')
+   .then((res) => {
+         return res.json();
+   })
+   .then((data) => {
+         console.log(data);
+   })
+   .catch((err) => {
+      console.error(err);
    });
+
+   const div = document.getElementById('missionTarget');
+   div.innerHTML = `
+     <ol>
+     <li>Name: ${data.name}</li>
+     <li>Diameter: ${data.diameter}</li>
+     <li>Star: ${data.star}</li>
+     <li>Distance from Earth: ${data.distance}</li>
+     <li>Number of Moons: ${data.moons}</li>
+     </ol>
+     <img src="${data.image}">
+   `;
+
 });
+
 
 window.addEventListener("load", function() {
    let form = document.querySelector("form");
